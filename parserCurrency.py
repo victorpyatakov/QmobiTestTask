@@ -2,7 +2,7 @@ from parserHtml import MyHTMLParser
 from urllib.request import urlopen
 import ssl
 
-class ParserCurrancy():
+class ParserCurrency():
     """
     Класс для получения списка валют после парсинга страницы
     """
@@ -15,5 +15,5 @@ class ParserCurrancy():
         page_currency = urlopen('https://cbr.ru/currency_base/daily/',context=context).read().decode('utf-8')
         parser = MyHTMLParser()
         parser.feed(page_currency)
-        currency_list = parser.get_currancy_list()
+        currency_list = parser.get_currency_list()
         return currency_list

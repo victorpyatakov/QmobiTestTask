@@ -2,8 +2,8 @@
 import json
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib import parse
-from parserCurrancy import ParserCurrancy
-from converter import ConverterCurrancy
+from parserCurrency import ParserCurrency
+from converter import ConverterCurrency
 
 class RequestHandler(BaseHTTPRequestHandler):
     """
@@ -13,13 +13,13 @@ class RequestHandler(BaseHTTPRequestHandler):
         try:
             if parse.urlsplit(self.path).path.endswith('/converter/api'):
                 request_params = dict(parse.parse_qsl(parse.urlsplit(self.path).query.lower()))
-                if 'currancy' in request_params and 'amount' in request_params:
-                    converter_curruncy = ConverterCurrancy(ParserCurrancy.get_curr_list(), request_params)
-                    course = float(converter_curruncy.get_currancy_cource())
+                if 'currency' in request_params and 'amount' in request_params:
+                    converter_currency = ConverterCurrency(ParserCurrency.get_curr_list(), request_params)
+                    course = float(converter_currency.get_currency_cource())
                     if course < 0:
-                        self.send_error(404,'currancy not found: %s' % self.path)
+                        self.send_error(404,'currency not found: %s' % self.path)
                         return
-                    result = float(converter_curruncy.get_convert_currancy())
+                    result = float(converter_currency.get_convert_currency())
                     if result < 0:
                         self.send_error(404,'amount must be > 0 : %s' % self.path)
                         return
@@ -47,7 +47,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         Метод для формирования JSON 
         """
         dict_response = {
-                            'currancy': request_params['currancy'],
+                            'currency': request_params['currency'],
                             'amount'  : float(request_params['amount']),
                             'course'  : course,
                             'result'  : result
