@@ -7,7 +7,7 @@ class ParserCurrancy():
     Класс для получения списка валют после парсинга страницы
     """
     @staticmethod
-    def get_curr_list():
+    def get_curr_list()->list:
         """
         Метод для получения списка валют
         """

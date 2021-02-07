@@ -35,7 +35,7 @@ class MyHTMLParser(HTMLParser):
                 self.__usd_currency[self.__i].append(data)
             
         
-    def get_currancy_list(self):
+    def get_currancy_list(self)->list:
         """
         Возвращает итоговый список после обработки
         """

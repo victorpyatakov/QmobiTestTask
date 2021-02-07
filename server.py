@@ -6,9 +6,9 @@ from parserCurrancy import ParserCurrancy
 from converter import ConverterCurrancy
 
 class RequestHandler(BaseHTTPRequestHandler):
-    '''
+    """
     Класс для обработки http запросов
-    '''
+    """
     def do_GET(self):
         try:
             if parse.urlsplit(self.path).path.endswith('/converter/api'):
@@ -47,10 +47,10 @@ class RequestHandler(BaseHTTPRequestHandler):
         Метод для формирования JSON 
         """
         dict_response = {
-                    'currancy': request_params['currancy'],
-                    'amount'  : float(request_params['amount']),
-                    'course'  : course,
-                    'result'  : result
+                            'currancy': request_params['currancy'],
+                            'amount'  : float(request_params['amount']),
+                            'course'  : course,
+                            'result'  : result
         }
         return dict_response
 
