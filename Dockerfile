@@ -6,6 +6,8 @@ WORKDIR /usr/src/app/
 
 COPY . /usr/src/app/
 
+ENV PYTHONUNBUFFERD=1
+
 EXPOSE 8080
 
-CMD ["python","program.py"]
+CMD ["python","-u","program.py"]
